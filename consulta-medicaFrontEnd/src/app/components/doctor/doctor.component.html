@@ -1,0 +1,128 @@
+<div class="container" id="main-container">
+    <div class="row">
+        <div *ngFor="let doctor of doctors"
+            class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-body row">
+                    <div class="col-6">
+                        <a href=""><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""
+                                class="img-fluid rounded-circle w-60"></a>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h2>{{doctor?.idDoctor}}</h2>
+                        <h5>Dr. : {{doctor?.nombre}} {{doctor?.apellido}}</h5>
+                        <p class="m-0">{{doctor?.especialidad}}</p>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i>Fecha Nacimiento :
+                        {{doctor?.fechaNac}} </li>
+
+
+                    <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i>Direccion :
+                        {{doctor?.direccion}}</li>
+                </ul>
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a (click)="onOpenDoctor(doctor,'update')" class="btn btn-primary tooltips" data-placement="top"
+                            data-toggle="tooltip" data-original-title="update"><i class="fa fa-pencil"></i> </a>
+                        <a (click)="onOpenDoctor(doctor,'delete')" class="btn btn-danger tooltips" data-placement="top"
+                            data-toggle="tooltip" data-original-title="delete"><i class="fa fa-times"></i></a>
+                        <a (click)="onOpenDoctor(doctor,'consulta')" class="btn btn-outline-info tooltips"
+                            data-placement="top" data-toggle="tooltip" data-original-title="Consultas"><i
+                                class="fa fa-briefcase"></i></a>
+                    </div>
+   
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+<!--Editar Doctor-->
+<div class="modal fade" id="updateDoctorModal" tabindex="-1" role="dialog" aria-labelledby="doctorUpdateModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateDoctorModalLabel">Editar Doctor {{editDoctor?.nombre}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #editForm="ngForm">
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" ngModel="{{editDoctor?.nombre}}" name="nombre" class="form-control"
+                            id="nombre" aria-describedby="emailHelp" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" ngModel="{{editDoctor?.idDoctor}}" name="idDoctor" class="form-control"
+                            id="idDoctor" placeholder="idDoctor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text">Apellido</label>
+                        <input type="text" ngModel="{{editDoctor?.apellido}}" name="apellido" class="form-control"
+                            id="apellido" placeholder="Apellido">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text">Especialidad</label>
+                        <input type="text" ngModel="{{editDoctor?.especialidad}}" name="especialidad"
+                            class="form-control" id="especialidad" placeholder="Especialidad">
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="text">Fecha de Nacimiento</label>
+                        <input class="form-control" ngModel="{{editDoctor?.fechaNac}}" type="date" id="fechaNac" name="fechaNac">
+                      
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Direccion</label>
+                        <input type="text" ngModel="{{editDoctor?.direccion}}" name="direccion" class="form-control"
+                            id="direccion" placeholder="Direccion">
+                    </div>
+
+                    <!--div class="form-group">
+                   <label for="phone">Image URL</label>
+                   <input type="text" ngModel="{{editDoctor?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                </div-->
+                    <div class="modal-footer">
+                        <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                        <button (click)="onUpdateDoctor(editForm.value)" data-dismiss="modal"
+                            class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Eliminar Doctor-->
+<div class="modal fade" id="deleteDoctorModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModelLabel">Eliminar Doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Estas seguro de eliminar {{deleteDoctor?.nombre}}?</p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button (click)="onDeleteDoctor(deleteDoctor ?.idDoctor)" class="btn btn-danger"
+                        data-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

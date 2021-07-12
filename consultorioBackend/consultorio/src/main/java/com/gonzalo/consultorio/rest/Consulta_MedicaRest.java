@@ -1,0 +1,63 @@
+package com.gonzalo.consultorio.rest;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gonzalo.consultorio.models.Consulta_Medica;
+import com.gonzalo.consultorio.services.Consulta_MedicaService;
+
+@RestController
+@RequestMapping("/consulta")
+public class Consulta_MedicaRest {
+	@Autowired
+	private  Consulta_MedicaService consulta_MedicaService;
+
+	public Consulta_MedicaRest(Consulta_MedicaService consulta) {
+		this.consulta_MedicaService = consulta;
+	}
+
+	@GetMapping("/all")
+	public ResponseEntity<List<Consulta_Medica>> getAllConsultas() {
+		List<Consulta_Medica> consultas = consulta_MedicaService.getAllConsultas();
+		return new ResponseEntity<>(consultas, HttpStatus.OK);
+	}
+
+	/*
+	 * @GetMapping("/find/{id}") public ResponseEntity<Consulta_Medica>
+	 * getConsultaById(@PathVariable("id") Long id) { Consulta_Medica consulta =
+	 * consulta_MedicaService.findConsultaById(id); return new
+	 * ResponseEntity<>(consulta, HttpStatus.OK); }
+	 */
+
+	@PostMapping("/add")
+	public ResponseEntity<Consulta_Medica> addConsulta(@RequestBody Consulta_Medica consulta) {
+		Consulta_Medica newConsulta = consulta_MedicaService.addConsulta(consulta);
+		return new ResponseEntity<>(newConsulta, HttpStatus.OK);
+	}
+
+
+	@PutMapping("/update")
+	public ResponseEntity<Consulta_Medica> updateConsulta(@RequestBody Consulta_Medica consulta) {
+		Consulta_Medica updateConsulta = consulta_MedicaService.updateConsulta(consulta);
+		return new ResponseEntity<>(updateConsulta, HttpStatus.OK);
+	}
+	
+	  @DeleteMapping("/delete/{id}")
+	  public ResponseEntity<Consulta_Medica>  deleteConsulta(@PathVariable("id") Long id) {
+	  consulta_MedicaService.deleteConsulta(id);
+	  return new ResponseEntity<>(HttpStatus.OK); 
+	  }
+	 
+}

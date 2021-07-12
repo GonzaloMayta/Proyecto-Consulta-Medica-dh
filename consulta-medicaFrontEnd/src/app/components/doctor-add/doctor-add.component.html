@@ -1,0 +1,52 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container col-md-4">
+    <div class="card">
+        <div class="card-body">
+            <form>
+
+                <p class="h2 text-center">Registrar Doctor</p>
+
+                <div class="preview text-center">
+                    <img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png"
+                        alt="Preview Image" width="200" height="200" />
+                </div>
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input class="form-control" type="text" name="nombre" required
+                       [(ngModel)]="savedoctor.nombre" placeholder="Ingrese nombre completo" />
+                </div>
+                <div class="form-group">
+                    <label>Apellidos:</label>
+                    <input class="form-control" type="text" name="apellido" required 
+                    [(ngModel)]="savedoctor.apellido" placeholder="Ingrese apellidos" />
+
+                </div>
+                <div class="form-group">
+                    <label>Especialidad:</label>
+                    <input class="form-control" type="text" name="especialidad" required
+                    [(ngModel)]="savedoctor.especialidad" placeholder="Ingrese especialidad" />
+
+                </div>
+                <div class="form-group">
+                    <label for="start">Fecha de nacimiento:</label>
+                    <input class="form-control" [(ngModel)]="savedoctor.fechaNac" type="date" id="start" name="trip-start">
+                </div>
+
+                <div class="form-group">
+                    <label>Direccion:</label>
+                    <input class="form-control" type="text" name="direccion" required 
+                    [(ngModel)]="savedoctor.direccion" placeholder="Direccion" />
+
+                </div>
+
+
+                <button class="btn btn-success btn-block" (click)="addDoctor()"> Crear Doctor</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>

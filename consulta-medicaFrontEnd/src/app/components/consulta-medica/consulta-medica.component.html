@@ -1,0 +1,103 @@
+<div class="container" id="main-container">
+    <h5>LISTA DE CONSULTAS:</h5>
+    <div>
+        <button type="button" class="btn btn-success" (click)="onOpenConsulta(null, 'add')">Nueva Consulta
+            Medica</button>
+
+    </div>
+    <div>
+        <table class="table ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id_ConsultaM</th>
+                    <th scope="col">Fecha de Consulta</th>
+                    <th scope="col">Medicamentos</th>
+                    <th scope="col">Doctor</th>
+                    <th scope="col">Paciente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let consulta of consultas">
+                    <th scope="row">{{consulta.idConsultaM}}</th>
+                    <td>{{consulta.fechaConsulta}}</td>
+                    <td>{{consulta.medicamentos}}</td>
+                    <td>{{consulta.doctor.idDoctor}}</td>
+                    <td>{{consulta.paciente.idPaciente}}</td>
+                    <div class="float-right btn-group btn-group-sm">
+                        <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
+                            data-original-title="update"><i class="fa fa-pencil"></i> </a>
+                        <a (click)="onOpenConsulta(consulta,'delete')" class="btn btn-danger tooltips"
+                            data-placement="top" data-toggle="tooltip" data-original-title="delete"><i
+                                class="fa fa-times"></i> </a>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Adicionar nueva consulta Modal -->
+<div class="modal fade" id="AddConsultaModal" tabindex="-1" role="dialog" aria-labelledby="addConsultaModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addConsultaModalLabel">Nueva Consulta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #addForm="ngForm">
+                    <div class="form-group">
+                        <label for="name">Medicamentos</label>
+                        <input type="text" ngModel name="medicamentos" class="form-control" id="medicamentos"
+                            placeholder="medicamentos" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idDoctor">ID_Doctor</label>
+                        <input type="number"  ngModel name="doctor:idDoctor" class="form-control" id="doctor" placeholder="Doctor"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="idPaciente">ID_Paciente</label>
+                        <input type="number" ngModel name="paciente.idPaciente" class="form-control" id="paciente"
+                            placeholder="Paciente" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-consulta-form" class="btn btn-secondary"
+                            data-dismiss="modal">Cerrar</button>
+                        <button (click)="onaddConsulta(addForm.value)" type="submit"
+                            class="btn btn-primary">Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Eliminar Consulta-->
+<div class="modal fade" id="deleteDoctorModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModelLabel">Eliminar Consulta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Estas seguro de eliminar la consulta {{deleteConsulta?.idConsultaM}}</p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button (click)="onDeleteConsulta(deleteConsulta?.idConsultaM)" class="btn btn-danger"
+                        data-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
