@@ -15,6 +15,9 @@ import { DoctorAddComponent } from './components/doctor-add/doctor-add.component
 import { PacienteComponent } from './components/paciente/paciente.component';
 import { PacienteAdicionarComponent } from './components/paciente-adicionar/paciente-adicionar.component';
 import { ConsultaMedicaComponent } from './components/consulta-medica/consulta-medica.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import { ConsultaMedicaComponent } from './components/consulta-medica/consulta-m
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     DoctorService

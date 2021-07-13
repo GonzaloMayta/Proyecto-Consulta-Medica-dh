@@ -24,7 +24,7 @@
                     <td>{{consulta.doctor.idDoctor}}</td>
                     <td>{{consulta.paciente.idPaciente}}</td>
                     <div class="float-right btn-group btn-group-sm">
-                        <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
+                        <a  class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
                             data-original-title="update"><i class="fa fa-pencil"></i> </a>
                         <a (click)="onOpenConsulta(consulta,'delete')" class="btn btn-danger tooltips"
                             data-placement="top" data-toggle="tooltip" data-original-title="delete"><i
@@ -35,6 +35,8 @@
         </table>
     </div>
 </div>
+
+
 
 
 <!-- Adicionar nueva consulta Modal -->
@@ -49,34 +51,34 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form #addForm="ngForm">
+                <form [formGroup]='formConsulta' >
                     <div class="form-group">
                         <label for="name">Medicamentos</label>
-                        <input type="text" ngModel name="medicamentos" class="form-control" id="medicamentos"
-                            placeholder="medicamentos" required>
+                        <input type="text" formControlName="medicamentos" name="medicamentos" class="form-control"
+                            id="medicamentos" placeholder="medicamentos" required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" formGroupName="doctor">
                         <label for="idDoctor">ID_Doctor</label>
-                        <input type="number"  ngModel name="doctor:idDoctor" class="form-control" id="doctor" placeholder="Doctor"
-                            required>
+                        <input type="number" formControlName="idDoctor" name="idDoctor" class="form-control" id="doctor"
+                            placeholder="Doctor" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" formGroupName="paciente">
                         <label for="idPaciente">ID_Paciente</label>
-                        <input type="number" ngModel name="paciente.idPaciente" class="form-control" id="paciente"
-                            placeholder="Paciente" required>
+                        <input type="number" formControlName="idPaciente" name="idPaciente" class="form-control"
+                            id="paciente" placeholder="Paciente" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="add-consulta-form" class="btn btn-secondary"
                             data-dismiss="modal">Cerrar</button>
-                        <button (click)="onaddConsulta(addForm.value)" type="submit"
-                            class="btn btn-primary">Crear</button>
+                        <button type="submit" (click)="onaddConsulta()" class="btn btn-primary">Crear</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <!--Eliminar Consulta-->
