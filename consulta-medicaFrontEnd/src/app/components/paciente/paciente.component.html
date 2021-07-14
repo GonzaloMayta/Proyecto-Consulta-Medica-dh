@@ -1,6 +1,10 @@
 <div class="container" id="main-container">
     <div class="row">
-        <div *ngFor="let paciente of pacientes" class="col-md-6 col-xl-3">
+        <div *ngFor="let paciente of pacientes  | paginate: {
+            itemsPerPage: nroelementos,
+            currentPage: pagina,
+            totalItems: count
+        } " class="col-md-6 col-xl-3">
             <div class="card m-b-30">
                 <div class="card-body row">
                     <div class="col-6">
@@ -32,6 +36,13 @@
                 </div>
             </div>
         </div>
+        <br>
+        <hr>
+        <div class="pagina col-md-12 text-center " >
+            <pagination-controls previousLabel="Anterior" nextLabel="Siguente" [responsive]="true"
+                (pageChange)="handlePageChange($event)" ></pagination-controls>
+        </div>
+
     </div>
 </div>
 

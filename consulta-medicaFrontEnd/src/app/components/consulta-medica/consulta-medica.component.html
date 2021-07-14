@@ -17,14 +17,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let consulta of consultas">
+                <tr *ngFor="let consulta of consultas  | paginate : {
+                    itemsPerPage: nroelementos,
+                    currentPage: pagina,
+                    totalItems: count
+                  };
+               ">
                     <th scope="row">{{consulta.idConsultaM}}</th>
                     <td>{{consulta.fechaConsulta}}</td>
                     <td>{{consulta.medicamentos}}</td>
                     <td>{{consulta.doctor.idDoctor}}</td>
                     <td>{{consulta.paciente.idPaciente}}</td>
                     <div class="float-right btn-group btn-group-sm">
-                        <a  class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
+                        <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
                             data-original-title="update"><i class="fa fa-pencil"></i> </a>
                         <a (click)="onOpenConsulta(consulta,'delete')" class="btn btn-danger tooltips"
                             data-placement="top" data-toggle="tooltip" data-original-title="delete"><i
@@ -33,6 +38,12 @@
                 </tr>
             </tbody>
         </table>
+        <br>
+        <hr>
+        <div class="pagina col-md-12 text-center">
+            <pagination-controls previousLabel="Anterior" nextLabel="Siguente" [responsive]="true"
+                (pageChange)="handlePageChange($event)"></pagination-controls>
+        </div>
     </div>
 </div>
 
@@ -51,7 +62,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form [formGroup]='formConsulta' >
+                <form [formGroup]='formConsulta'>
                     <div class="form-group">
                         <label for="name">Medicamentos</label>
                         <input type="text" formControlName="medicamentos" name="medicamentos" class="form-control"

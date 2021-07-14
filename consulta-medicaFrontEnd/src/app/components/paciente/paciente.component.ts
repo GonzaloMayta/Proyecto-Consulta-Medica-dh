@@ -14,6 +14,10 @@ export class PacienteComponent implements OnInit {
   public pacientes: Paciente[];
   public editPaciente: Paciente;
   public deletePaciente: Paciente;
+  pagina = 1;
+  count = 0;
+  nroelementos = 8;
+
   constructor(private pacienteService: PacienteService) { }
 
   ngOnInit(): void {
@@ -87,6 +91,9 @@ export class PacienteComponent implements OnInit {
     button.click();
   }
 
-
+  handlePageChange(event: number): void {
+    this.pagina = event;
+    this.getPacientes();
+  }
 
 }

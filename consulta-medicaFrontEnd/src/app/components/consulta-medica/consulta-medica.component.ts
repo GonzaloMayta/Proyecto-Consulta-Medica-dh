@@ -18,6 +18,10 @@ export class ConsultaMedicaComponent implements OnInit {
   public deleteConsulta: ConsultaMedica;
   public editConsulta: ConsultaMedica;
 
+  pagina = 1;
+  count = 0;
+  nroelementos = 10;
+
   formConsulta = new FormGroup({
     medicamentos: new FormControl(''),
     doctor: new FormGroup({
@@ -104,10 +108,6 @@ export class ConsultaMedicaComponent implements OnInit {
       this.saveConsulta = consulta;
       button.setAttribute('data-target', '#AddConsultaModal');
     }
-    if (mode === 'update') {
-      this.editConsulta = consulta;
-      button.setAttribute('data-target', '#updateConsultaModal');
-    }
     if (mode === 'delete') {
       this.deleteConsulta = consulta;
       button.setAttribute('data-target', '#deleteDoctorModal');
@@ -116,4 +116,9 @@ export class ConsultaMedicaComponent implements OnInit {
     button.click();
   }
 
+
+  handlePageChange(event: number): void {
+    this.pagina = event;
+    this.getConsutltas();
+  }
 }

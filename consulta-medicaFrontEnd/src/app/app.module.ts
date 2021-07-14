@@ -17,6 +17,7 @@ import { PacienteAdicionarComponent } from './components/paciente-adicionar/paci
 import { ConsultaMedicaComponent } from './components/consulta-medica/consulta-medica.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [
     DoctorService

@@ -14,8 +14,9 @@ export class DoctorComponent implements OnInit {
   public editDoctor: Doctor;
   public deleteDoctor: Doctor;
 
-public pagina:number=1;
-
+  pagina = 1;
+  count = 0;
+  nroelementos = 8;
 
   constructor(private doctorService: DoctorService) { }
 
@@ -33,6 +34,8 @@ public pagina:number=1;
         alert(error.message);
       }
     );
+
+
 
   }
 
@@ -89,5 +92,11 @@ public pagina:number=1;
     }
     container.appendChild(button);
     button.click();
+  }
+
+
+  handlePageChange(event: number): void {
+    this.pagina = event;
+    this.getDoctors();
   }
 }

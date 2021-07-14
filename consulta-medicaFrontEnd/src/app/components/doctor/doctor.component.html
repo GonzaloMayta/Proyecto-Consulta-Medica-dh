@@ -1,7 +1,11 @@
 <div class="container" id="main-container">
     <div class="row">
-        <div *ngFor="let doctor of doctors"
-            class="col-md-6 col-xl-3">
+        <div *ngFor="let doctor of doctors | paginate : {
+            itemsPerPage: nroelementos,
+            currentPage: pagina,
+            totalItems: count
+          };
+        "class="col-md-6 col-xl-3">
             <div class="card m-b-30">
                 <div class="card-body row">
                     <div class="col-6">
@@ -32,13 +36,21 @@
                             data-placement="top" data-toggle="tooltip" data-original-title="Consultas"><i
                                 class="fa fa-briefcase"></i></a>
                     </div>
-   
+
                 </div>
             </div>
         </div>
-        
+        <br>
+        <hr>
+        <div class="pagina col-md-12 text-center" >
+            <pagination-controls previousLabel="Anterior" nextLabel="Siguente" [responsive]="true"
+                (pageChange)="handlePageChange($event)" ></pagination-controls>
+        </div>
+
     </div>
 </div>
+
+
 
 
 <!--Editar Doctor-->
@@ -80,8 +92,9 @@
 
                     <div class="form-group">
                         <label for="text">Fecha de Nacimiento</label>
-                        <input class="form-control" ngModel="{{editDoctor?.fechaNac}}" type="date" id="fechaNac" name="fechaNac">
-                      
+                        <input class="form-control" ngModel="{{editDoctor?.fechaNac}}" type="date" id="fechaNac"
+                            name="fechaNac">
+
                     </div>
                     <div class="form-group">
                         <label for="text">Direccion</label>
