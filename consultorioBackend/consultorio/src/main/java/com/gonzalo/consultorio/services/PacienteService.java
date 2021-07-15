@@ -14,11 +14,11 @@ import com.gonzalo.consultorio.repo.PacienteRepo;
 public class PacienteService {
 	private final PacienteRepo pacienteRepo;
 
-	// private final Consulta_MedicaRepo consultaRepo;
+	
 	@Autowired
 	public PacienteService(PacienteRepo pacienteRepo) {
 		this.pacienteRepo = pacienteRepo;
-		// this.consultaRepo = consulta_MedicaRepo;
+		
 	}
 
 	public Paciente addPaciente(Paciente paciente) {
@@ -37,7 +37,7 @@ public class PacienteService {
 	public Paciente findpacienteById(Long idPaciente) {
 
 		return pacienteRepo.findById(idPaciente)
-				.orElseThrow(() -> new UserNotFoundException("Paciente by idPaciente" + idPaciente + "was not found"));
+				.orElseThrow(() -> new UserNotFoundException("Paciente con idPaciente" + idPaciente + "no fue encontrado"));
 	}
 
 	public void deletePaciente(Long idPaciente) {

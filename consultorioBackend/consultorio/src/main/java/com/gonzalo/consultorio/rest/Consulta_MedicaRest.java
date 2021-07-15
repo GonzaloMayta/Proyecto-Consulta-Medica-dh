@@ -3,10 +3,8 @@ package com.gonzalo.consultorio.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,8 +60,25 @@ public class Consulta_MedicaRest {
 		}
 	  /*Listamos Pacientes*/
 	  @GetMapping("/listapaciente/{iddoctor}")
-		public ResponseEntity<List<Consulta_Medica>> listarPaciente(@PathVariable("iddoctor") Number iddoctor) {
+		public ResponseEntity<List<Consulta_Medica>> listarPacientes(@PathVariable("iddoctor") Number iddoctor) {
 			List<Consulta_Medica> listaP = consulta_MedicaService.listarPacientes(iddoctor);
 			return new ResponseEntity<>(listaP, HttpStatus.OK);
 		}
+	  
+	  
+	  /*Listamos consulta de Paciente*/
+	  @GetMapping("/listapaciente/{iddoctor}/{idpaciente}")
+		public ResponseEntity<List<Consulta_Medica>> listaConsultaPaciente(@PathVariable("iddoctor") Number iddoctor, @PathVariable("idpaciente") Number idpaciente) {
+			List<Consulta_Medica> listaP = consulta_MedicaService.listaConsultaPaciente(iddoctor,idpaciente);
+			return new ResponseEntity<>(listaP, HttpStatus.OK);
+		}
+	  
+	  
+	  /*Historial clinico de Paciente*/
+	  @GetMapping("/historial/{idpaciente}")
+		public ResponseEntity<List<Consulta_Medica>> historialPaciente(@PathVariable("idpaciente") Number idpaciente) {
+			List<Consulta_Medica> historial = consulta_MedicaService.historialPaciente(idpaciente);
+			return new ResponseEntity<>(historial, HttpStatus.OK);
+		}
+	  
 }

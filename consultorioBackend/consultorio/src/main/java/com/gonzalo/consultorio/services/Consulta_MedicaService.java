@@ -1,6 +1,5 @@
 package com.gonzalo.consultorio.services;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +23,10 @@ public class Consulta_MedicaService {
 	private PacienteRepo pacienteRepo;
 
 	
-
-	/*
-	 * //*@Autowired public Consulta_MedicaService(Consulta_MedicaRepo
-	 * consulta_MedicaRepo, DoctorRepo doctorRepo) { this.consulta_MedicaRepo =
-	 * consulta_MedicaRepo; this.doctorRepo=doctorRepo;
-	 * ///this.pacienteRepo=pacienteRepo; }
-	 */
 	public List<Consulta_Medica> getAllConsultas() {
 		return consulta_MedicaRepo.findAll();
 	}
-	
+
 	public Consulta_Medica addConsulta(Consulta_Medica consulta_Medica) {
 
 		Doctor doctorE = doctorRepo.findById(consulta_Medica.getDoctor().getIdDoctor()).orElse(null);
@@ -68,29 +60,33 @@ public class Consulta_MedicaService {
 		return consulta_MedicaRepo.save(consulta_Medica);
 	}
 
-	/*
-	 * public Consulta_Medica findConsultaById(Long idConsulta) {
-	 * 
-	 * return consulta_MedicaRepo.findConsulta_MedicaById(idConsulta).orElseThrow(
-	 * () -> new UserNotFoundException("Consulta medica by idConsulta" + idConsulta
-	 * + "was not found")); }
-	 */
-	  public void deleteConsulta(Long idConsulta) {
-	 consulta_MedicaRepo.deleteById(idConsulta); 
-	 }
-	  
-	  public List<Consulta_Medica> OrderByFecha() {
-		  List<Consulta_Medica> ordenado = consulta_MedicaRepo.findAll(Sort.by(Sort.Direction.DESC, "fechaConsulta"));
-			return ordenado ;
-		}
-	  
-	  
-	  public List<Consulta_Medica> listarPacientes(Number doctor_id) {
-		  
-		  List<Consulta_Medica> lista = consulta_MedicaRepo.listaPaciente(doctor_id);
-				 
-			return lista ;
-		}
-	  //select * from consulta_medica where id_doctor=14;
+	public void deleteConsulta(Long idConsulta) {
+		consulta_MedicaRepo.deleteById(idConsulta);
+	}
+
+	public List<Consulta_Medica> OrderByFecha() {
+		
+		List<Consulta_Medica> ordenado = consulta_MedicaRepo.findAll(Sort.by(Sort.Direction.DESC, "fechaConsulta"));
+		return ordenado;
+	}
+
+	public List<Consulta_Medica> listarPacientes(Number doctor_id) {
+
+		List<Consulta_Medica> lista = consulta_MedicaRepo.listaPacientes(doctor_id);
+		return lista;
+	}
+
+	public List<Consulta_Medica> listaConsultaPaciente(Number doctor_id, Number paciente_id) {
+
+		List<Consulta_Medica> listaConsulta = consulta_MedicaRepo.listaConsultaPaciente(doctor_id, paciente_id);
+
+		return listaConsulta;
+	}
+
+	public List<Consulta_Medica> historialPaciente( Number paciente_id) {
+
+		List<Consulta_Medica> historial = consulta_MedicaRepo.historialPaciente(paciente_id);
+		return historial;
+	}
 
 }
