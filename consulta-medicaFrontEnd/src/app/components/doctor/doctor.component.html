@@ -1,11 +1,23 @@
 <div class="container" id="main-container">
+    <div class="buscar">
+          <div class="input-group">
+            <input type="text" class="form-control" id="buscarnombre" name="buscarnombre" ngModel #buscarnombre="ngModel"  placeholder="Buscar doctor">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" (click)="findNameDoctor(buscarnombre.value)"  type="button">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+    </div>
+
+    <br>
     <div class="row">
         <div *ngFor="let doctor of doctors | paginate : {
             itemsPerPage: nroelementos,
             currentPage: pagina,
             totalItems: count
           };
-        "class="col-md-6 col-xl-3">
+        " class="col-md-6 col-xl-3">
             <div class="card m-b-30">
                 <div class="card-body row">
                     <div class="col-6">
@@ -42,9 +54,9 @@
         </div>
         <br>
         <hr>
-        <div class="pagina col-md-12 text-center" >
+        <div class="pagina col-md-12 text-center">
             <pagination-controls previousLabel="Anterior" nextLabel="Siguente" [responsive]="true"
-                (pageChange)="handlePageChange($event)" ></pagination-controls>
+                (pageChange)="handlePageChange($event)"></pagination-controls>
         </div>
 
     </div>

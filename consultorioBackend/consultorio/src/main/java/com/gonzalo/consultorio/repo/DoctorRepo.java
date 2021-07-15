@@ -1,5 +1,6 @@
 package com.gonzalo.consultorio.repo;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +15,7 @@ public interface DoctorRepo extends JpaRepository<Doctor, Integer> {
 
 	//void deleteDoctorById(Long idDoctor);
 
-	
+	List<Doctor> findByNombre(String nombre);
 
+	
 }

@@ -29,7 +29,11 @@ export class DoctorService {
   public deleteDoctor(idDoctor: number):Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/doctor/delete/${idDoctor}`);
   }
+  
 
+  public findNameDoctor(nombre: string):Observable<Doctor[]>{
+    return this.http.get<Doctor[]>(`${this.apiServerUrl}/doctor/findName/${nombre}`);
+  }
 
 
 

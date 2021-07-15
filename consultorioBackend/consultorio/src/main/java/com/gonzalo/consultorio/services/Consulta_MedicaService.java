@@ -1,8 +1,10 @@
 package com.gonzalo.consultorio.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.gonzalo.consultorio.models.Consulta_Medica;
@@ -76,6 +78,19 @@ public class Consulta_MedicaService {
 	  public void deleteConsulta(Long idConsulta) {
 	 consulta_MedicaRepo.deleteById(idConsulta); 
 	 }
-	 
+	  
+	  public List<Consulta_Medica> OrderByFecha() {
+		  List<Consulta_Medica> ordenado = consulta_MedicaRepo.findAll(Sort.by(Sort.Direction.DESC, "fechaConsulta"));
+			return ordenado ;
+		}
+	  
+	  
+	  public List<Consulta_Medica> listarPacientes(Number doctor_id) {
+		  
+		  List<Consulta_Medica> lista = consulta_MedicaRepo.listaPaciente(doctor_id);
+				 
+			return lista ;
+		}
+	  //select * from consulta_medica where id_doctor=14;
 
 }

@@ -70,6 +70,21 @@ export class DoctorComponent implements OnInit {
   }
 
 
+  /* Buscar Doctor por nombre*/
+  public findNameDoctor(nombre: string): void {
+    console.log(nombre);
+    this.doctorService.findNameDoctor(nombre).subscribe(
+      (response: Doctor[]) => {
+        this.doctors = response;
+        console.log(response);
+      }, (error: HttpErrorResponse) => {
+        console.log("aqui hay error");
+        alert(error.message);
+      }
+    );
+
+  }
+
   /* Modulo */
   public onOpenDoctor(doctor: Doctor, mode: string): void {
     const container = document.getElementById('main-container');

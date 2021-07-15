@@ -27,4 +27,7 @@ export class PacienteService {
   public deletePaciente(idPaciente: number):Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/paciente/delete/${idPaciente}`);
   }
+  public findNameDoctor(nombre: string):Observable<Paciente[]>{
+    return this.http.get<Paciente[]>(`${this.apiServerUrl}/paciente/findName/${nombre}`);
+  }
 }

@@ -3,6 +3,7 @@ package com.gonzalo.consultorio.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -34,13 +35,7 @@ public class Consulta_MedicaRest {
 		return new ResponseEntity<>(consultas, HttpStatus.OK);
 	}
 
-	/*
-	 * @GetMapping("/find/{id}") public ResponseEntity<Consulta_Medica>
-	 * getConsultaById(@PathVariable("id") Long id) { Consulta_Medica consulta =
-	 * consulta_MedicaService.findConsultaById(id); return new
-	 * ResponseEntity<>(consulta, HttpStatus.OK); }
-	 */
-
+	
 	@PostMapping("/add")
 	public ResponseEntity<Consulta_Medica> addConsulta(@RequestBody Consulta_Medica consulta) {
 		Consulta_Medica newConsulta = consulta_MedicaService.addConsulta(consulta);
@@ -60,4 +55,15 @@ public class Consulta_MedicaRest {
 	  return new ResponseEntity<>(HttpStatus.OK); 
 	  }
 	 
+	  @GetMapping("/ordenado")
+		public ResponseEntity<List<Consulta_Medica>> OrderByFecha() {
+			List<Consulta_Medica> consultas = consulta_MedicaService.OrderByFecha();
+			return new ResponseEntity<>(consultas, HttpStatus.OK);
+		}
+	  /*Listamos Pacientes*/
+	  @GetMapping("/listapaciente/{iddoctor}")
+		public ResponseEntity<List<Consulta_Medica>> listarPaciente(@PathVariable("iddoctor") Number iddoctor) {
+			List<Consulta_Medica> listaP = consulta_MedicaService.listarPacientes(iddoctor);
+			return new ResponseEntity<>(listaP, HttpStatus.OK);
+		}
 }

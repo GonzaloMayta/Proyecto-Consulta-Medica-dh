@@ -14,7 +14,7 @@ export class ConsultaMedicaService {
 
   public getConsultas(): Observable<ConsultaMedica[]> {
     console.log("is here");
-    return this.http.get<ConsultaMedica[]>(`${this.apiServerUrl}/consulta/all`);
+    return this.http.get<ConsultaMedica[]>(`${this.apiServerUrl}/consulta/ordenado`);
   }
 
   public addConsulta(consulta: ConsultaMedica): Observable<ConsultaMedica> {

@@ -44,4 +44,8 @@ public class PacienteService {
 		pacienteRepo.deleteById(idPaciente);
 	}
 
+	public List<Paciente> findByNamePaciente( String nombrePaciente){
+		return pacienteRepo.findByNombre(nombrePaciente);
+	}
+	
 }

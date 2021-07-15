@@ -32,9 +32,7 @@ public class Consulta_Medica implements Serializable {
 	@Column(name = "idConsultaM")
 	private Long idConsultaM;
 	
-	/*
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+4")
-	*/
+	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")

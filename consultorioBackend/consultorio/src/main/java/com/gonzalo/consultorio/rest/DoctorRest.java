@@ -56,5 +56,11 @@ public class DoctorRest {
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping("/findName/{nombre}")
+	public ResponseEntity<List<Doctor>> findDoctorByName(@PathVariable("nombre") String nombre){
+		List<Doctor> doctors=doctorService.findByNameDoctor(nombre);
+		return new ResponseEntity<>(doctors, HttpStatus.OK);
+	}
 
 }

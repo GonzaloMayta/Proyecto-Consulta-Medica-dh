@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gonzalo.consultorio.models.Doctor;
 import com.gonzalo.consultorio.models.Paciente;
 import com.gonzalo.consultorio.services.PacienteService;
 
@@ -56,6 +57,12 @@ public class PacienteRest {
 		pacienteService.deletePaciente(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 
+	}
+
+	@GetMapping("/findName/{nombre}")
+	public ResponseEntity<List<Paciente>> findDoctorByName(@PathVariable("nombre") String nombre){
+		List<Paciente> pacientes=pacienteService.findByNamePaciente(nombre);
+		return new ResponseEntity<>(pacientes, HttpStatus.OK);
 	}
 
 }

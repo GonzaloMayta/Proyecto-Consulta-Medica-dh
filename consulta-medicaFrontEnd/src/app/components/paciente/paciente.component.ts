@@ -66,6 +66,22 @@ export class PacienteComponent implements OnInit {
     );
   }
 
+ /* Buscar Paciente por nombre*/
+ public findNameDoctor(nombre: string): void {
+  console.log(nombre);
+  this.pacienteService.findNameDoctor(nombre).subscribe(
+    (response: Paciente[]) => {
+      this.pacientes = response;
+      console.log(response);
+    }, (error: HttpErrorResponse) => {
+      console.log("aqui hay error");
+      alert(error.message);
+    }
+  );
+
+}
+
+
 
   /* Modulo */
   public onOpenPaciente(paciente: Paciente, mode: string): void {
