@@ -1,15 +1,16 @@
 <div class="container" id="main-container">
     <div class="buscar">
         <div class="input-group">
-          <input type="text" class="form-control" id="buscarnombre" name="buscarnombre" ngModel #buscarnombre="ngModel"  placeholder="Buscar doctor">
-          <div class="input-group-append">
-            <button class="btn btn-secondary" (click)="findNameDoctor(buscarnombre.value)"  type="button">
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
+            <input type="text" class="form-control" id="buscarnombre" name="buscarnombre" ngModel
+                #buscarnombre="ngModel" placeholder="Buscar doctor">
+            <div class="input-group-append">
+                <button class="btn btn-secondary" (click)="findNameDoctor(buscarnombre.value)" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         </div>
-  </div>
-  <br>
+    </div>
+    <br>
     <div class="row">
         <div *ngFor="let paciente of pacientes  | paginate: {
             itemsPerPage: nroelementos,
@@ -35,27 +36,33 @@
                 </ul>
                 <div class="card-body">
                     <div class="float-right btn-group btn-group-sm">
-                        <a (click)="onOpenPaciente(paciente,'update')" class="btn btn-primary tooltips" data-placement="top"
-                            data-toggle="tooltip" data-original-title="update"><i class="fa fa-pencil"></i> </a>
-                        <a (click)="onOpenPaciente(paciente,'delete')" class="btn btn-danger tooltips" data-placement="top"
-                            data-toggle="tooltip" data-original-title="delete"><i class="fa fa-times"></i></a>
-                        <a (click)="onOpenPaciente(paciente,'consulta')" class="btn btn-outline-info tooltips"
-                            data-placement="top" data-toggle="tooltip" data-original-title="Consultas"><i
-                                class="fa fa-briefcase"></i></a>
+                        <a (click)="onOpenPaciente(paciente,'update')" class="btn btn-primary tooltips"
+                            data-placement="top" data-toggle="tooltip" data-original-title="update" title="Editar"><i
+                                class="fa fa-pencil fa-2x"></i> </a>
+                        <a (click)="onOpenPaciente(paciente,'delete')" class="btn btn-danger tooltips"
+                            data-placement="top" data-toggle="tooltip" data-original-title="delete" title="Eliminar"><i
+                                class="fa fa-times fa-2x"></i></a>
+                        <a  routerLink="/historialpac/{{paciente.idPaciente}}" class="btn btn-outline-info tooltips"
+                            data-placement="top" data-toggle="tooltip" data-original-title="historial" title="Historial Clinico"><i
+                                class="fa fa-list-alt fa-2x" aria-hidden="true"></i>
+                           
+                            </a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
         <br>
         <hr>
-        <div class="pagina col-md-12 text-center " >
+        <div class="pagina col-md-12 text-center ">
             <pagination-controls previousLabel="Anterior" nextLabel="Siguente" [responsive]="true"
-                (pageChange)="handlePageChange($event)" ></pagination-controls>
+                (pageChange)="handlePageChange($event)"></pagination-controls>
         </div>
 
     </div>
 </div>
+
+
 
 
 <!--Editar Doctor-->
@@ -77,8 +84,8 @@
                             id="nombre" aria-describedby="emailHelp" placeholder="Nombre">
                     </div>
                     <div class="form-group">
-                    <input type="hidden" ngModel="{{editPaciente?.idPaciente}}" name="idPaciente" class="form-control"
-                        id="idPaciente" placeholder="idPaciente">
+                        <input type="hidden" ngModel="{{editPaciente?.idPaciente}}" name="idPaciente"
+                            class="form-control" id="idPaciente" placeholder="idPaciente">
                     </div>
 
                     <div class="form-group">
@@ -89,7 +96,8 @@
 
                     <div class="form-group">
                         <label for="text">Fecha de Nacimiento</label>
-                        <input class="form-control" ngModel="{{editPaciente?.fechaNac}}" type="date" id="fechaNac" name="fechaNac">
+                        <input class="form-control" ngModel="{{editPaciente?.fechaNac}}" type="date" id="fechaNac"
+                            name="fechaNac">
                     </div>
                     <div class="form-group">
                         <label for="phone">Direccion</label>

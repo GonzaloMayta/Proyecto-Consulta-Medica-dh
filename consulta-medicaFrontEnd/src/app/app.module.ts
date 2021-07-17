@@ -18,6 +18,8 @@ import { ConsultaMedicaComponent } from './components/consulta-medica/consulta-m
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule} from 'ngx-pagination';
+import { HistorialPacienteComponent } from './components/historial-paciente/historial-paciente.component';
+import { DoctorAtencionComponent } from './components/doctor-atencion/doctor-atencion.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { NgxPaginationModule} from 'ngx-pagination';
     DoctorAddComponent,
     PacienteComponent,
     PacienteAdicionarComponent,
-    ConsultaMedicaComponent
+    ConsultaMedicaComponent,
+    HistorialPacienteComponent,
+    DoctorAtencionComponent
   ],
   imports: [
     BrowserModule,

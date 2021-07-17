@@ -40,13 +40,13 @@
                 </ul>
                 <div class="card-body">
                     <div class="float-right btn-group btn-group-sm">
-                        <a (click)="onOpenDoctor(doctor,'update')" class="btn btn-primary tooltips" data-placement="top"
-                            data-toggle="tooltip" data-original-title="update"><i class="fa fa-pencil"></i> </a>
-                        <a (click)="onOpenDoctor(doctor,'delete')" class="btn btn-danger tooltips" data-placement="top"
-                            data-toggle="tooltip" data-original-title="delete"><i class="fa fa-times"></i></a>
-                        <a (click)="onOpenDoctor(doctor,'consulta')" class="btn btn-outline-info tooltips"
-                            data-placement="top" data-toggle="tooltip" data-original-title="Consultas"><i
-                                class="fa fa-briefcase"></i></a>
+                        <a (click)="onOpenDoctor(doctor,'update')" class="btn btn-primary tooltips" data-placement="bottom"
+                            data-toggle="tooltip" data-original-title="update"  title="Editar" ><i class="fa fa-pencil fa-2x"></i> </a>
+                        <a (click)="onOpenDoctor(doctor,'delete')" class="btn btn-danger tooltips" data-placement="bottom"
+                            data-toggle="tooltip" data-original-title="delete" title="Eliminar"><i class="fa fa-times fa-2x"  ></i></a>
+                        <a routerLink="/consultasmedicas/{{doctor.idDoctor}}" class="btn btn-outline-info tooltips"
+                            data-placement="bottom" data-toggle="tooltip" data-original-title="Consultas" title="Consultas Medicas"><i
+                                class="fa fa-briefcase fa-2x"></i></a>
                     </div>
 
                 </div>

@@ -58,23 +58,23 @@ public class Consulta_MedicaRest {
 			List<Consulta_Medica> consultas = consulta_MedicaService.OrderByFecha();
 			return new ResponseEntity<>(consultas, HttpStatus.OK);
 		}
-	  /*Listamos Pacientes*/
-	  @GetMapping("/listapaciente/{iddoctor}")
+	  /*Listamos Pacientes atendidos por doctor id  */
+	  @GetMapping("/medicas/{iddoctor}")
 		public ResponseEntity<List<Consulta_Medica>> listarPacientes(@PathVariable("iddoctor") Number iddoctor) {
 			List<Consulta_Medica> listaP = consulta_MedicaService.listarPacientes(iddoctor);
 			return new ResponseEntity<>(listaP, HttpStatus.OK);
 		}
 	  
 	  
-	  /*Listamos consulta de Paciente*/
-	  @GetMapping("/listapaciente/{iddoctor}/{idpaciente}")
+	  /*Listamos consulta de Paciente con un solo doctor*/
+	  @GetMapping("/atencion/{iddoctor}/{idpaciente}")
 		public ResponseEntity<List<Consulta_Medica>> listaConsultaPaciente(@PathVariable("iddoctor") Number iddoctor, @PathVariable("idpaciente") Number idpaciente) {
-			List<Consulta_Medica> listaP = consulta_MedicaService.listaConsultaPaciente(iddoctor,idpaciente);
-			return new ResponseEntity<>(listaP, HttpStatus.OK);
+			List<Consulta_Medica> listaConsulta = consulta_MedicaService.listaConsultaPaciente(iddoctor,idpaciente);
+			return new ResponseEntity<>(listaConsulta, HttpStatus.OK);
 		}
 	  
 	  
-	  /*Historial clinico de Paciente*/
+	  /*Historial clinico del Paciente*/
 	  @GetMapping("/historial/{idpaciente}")
 		public ResponseEntity<List<Consulta_Medica>> historialPaciente(@PathVariable("idpaciente") Number idpaciente) {
 			List<Consulta_Medica> historial = consulta_MedicaService.historialPaciente(idpaciente);

@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from 'src/app/models/paciente';
 
@@ -36,7 +36,7 @@ export class PacienteComponent implements OnInit {
     );
   }
 
-  
+
   /*Editar*/
   public onUpdatePaciente(paciente: Paciente): void {
     console.log("id: " + paciente.idPaciente)
@@ -66,22 +66,20 @@ export class PacienteComponent implements OnInit {
     );
   }
 
- /* Buscar Paciente por nombre*/
- public findNameDoctor(nombre: string): void {
-  console.log(nombre);
-  this.pacienteService.findNameDoctor(nombre).subscribe(
-    (response: Paciente[]) => {
-      this.pacientes = response;
-      console.log(response);
-    }, (error: HttpErrorResponse) => {
-      console.log("aqui hay error");
-      alert(error.message);
-    }
-  );
+  /* Buscar Paciente por nombre*/
+  public findNameDoctor(nombre: string): void {
+    console.log(nombre);
+    this.pacienteService.findNameDoctor(nombre).subscribe(
+      (response: Paciente[]) => {
+        this.pacientes = response;
+        console.log(response);
+      }, (error: HttpErrorResponse) => {
+        console.log("aqui hay error");
+        alert(error.message);
+      }
+    );
 
-}
-
-
+  }
 
   /* Modulo */
   public onOpenPaciente(paciente: Paciente, mode: string): void {
@@ -94,15 +92,15 @@ export class PacienteComponent implements OnInit {
     if (mode === 'update') {
       this.editPaciente = paciente;
       button.setAttribute('data-target', '#updatePacienteModal');
-
       console.log(this.editPaciente.idPaciente);
 
     }
-
+   
     if (mode === 'delete') {
       this.deletePaciente = paciente;
       button.setAttribute('data-target', '#deletePacienteModal');
     }
+
     container.appendChild(button);
     button.click();
   }

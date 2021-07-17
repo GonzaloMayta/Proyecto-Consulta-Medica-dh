@@ -9,7 +9,7 @@
         <table class="table ">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">id_ConsultaM</th>
+                    <th scope="col">Cod Consulta</th>
                     <th scope="col">Fecha de Consulta</th>
                     <th scope="col">Medicamentos</th>
                     <th scope="col">Doctor</th>
@@ -29,11 +29,10 @@
                     <td>{{consulta.doctor.idDoctor}}</td>
                     <td>{{consulta.paciente.idPaciente}}</td>
                     <div class="float-right btn-group btn-group-sm">
-                        <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
-                            data-original-title="update"><i class="fa fa-pencil"></i> </a>
+                        
                         <a (click)="onOpenConsulta(consulta,'delete')" class="btn btn-danger tooltips"
-                            data-placement="top" data-toggle="tooltip" data-original-title="delete"><i
-                                class="fa fa-times"></i> </a>
+                            data-placement="top" data-toggle="tooltip" data-original-title="delete" title="Eliminar"><i
+                                class="fa fa-times " ></i> </a>
                     </div>
                 </tr>
             </tbody>

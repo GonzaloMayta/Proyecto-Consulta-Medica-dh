@@ -1,0 +1,27 @@
+<div class="container" id="main-container">
+    <h5>CONSULTAS MEDICAS:</h5>
+      <div>
+        <table class="table table-hover ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Cod. Consulta</th>
+                    <th scope="col">Nombre Paciente</th>
+                    
+                    
+                    <th scope="col">Medicamentos Recetados</th>
+                    <th scope="col">Fecha de Consulta</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let consulta  of consultasMedicas" routerLink="/historialpacdoc/{{consulta.doctor.idDoctor}}/{{consulta.paciente.idPaciente}}">
+                    <th scope="row">{{consulta.idConsultaM}}</th>
+                    <td>{{consulta.paciente.nombre}} {{consulta.paciente.apellido}}</td>                    
+                    <td>{{consulta.medicamentos}}</td>
+                    <td>{{consulta.fechaConsulta}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+         
+    </div>
+</div>

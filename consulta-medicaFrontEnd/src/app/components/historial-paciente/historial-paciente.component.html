@@ -1,0 +1,28 @@
+<div class="container" id="main-container">
+    <h5>HISTORIAL MEDICO PACIENTE:</h5>
+      <div>
+        <table class="table ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Cod. Consulta</th>
+                    <th scope="col">Nombre Doctor</th>
+                    <th scope="col">Especialidad</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Medicamentos Recetados</th>
+                    <th scope="col">Fecha de Consulta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let consulta  of historial">
+                    <th scope="row">{{consulta.idConsultaM}}</th>
+                    <td>{{consulta.doctor.nombre}} {{consulta.doctor.apellido}}</td>
+                    <td>{{consulta.doctor.especialidad}}</td>
+                    <td>{{consulta.doctor.direccion}}</td>
+                    <td>{{consulta.medicamentos}}</td>
+                    <td>{{consulta.fechaConsulta}}</td>                
+                </tr>
+            </tbody>
+        </table>
+         
+    </div>
+</div>

@@ -84,6 +84,9 @@ export class DoctorComponent implements OnInit {
     );
 
   }
+/* Buscar Listar Pacientes atendidos*/
+
+
 
   /* Modulo */
   public onOpenDoctor(doctor: Doctor, mode: string): void {
